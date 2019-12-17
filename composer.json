@@ -1,0 +1,42 @@
+{
+    "name": "nickcheek/handwriting",
+    "description": "Wrapper for handwriting.io",
+    "keywords": [
+        "nickcheek",
+        "handwriting"
+    ],
+    "homepage": "https://github.com/nickcheek/handwriting",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Nicholas Cheek",
+            "email": "nick@nicholascheek.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nickcheek\\Handwriting\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nickcheek\\Handwriting\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
