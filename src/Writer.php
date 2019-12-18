@@ -8,6 +8,7 @@ use GuzzleHttp\Psr7\Request;
 class Writer extends Builder
 {
     protected string $key;
+    protected array $auth;
     protected string $secret;
     protected Client $client;
 
@@ -16,31 +17,45 @@ class Writer extends Builder
         parent::__construct();
         $this->key = $key;
         $this->secret = $secret;
+        $this->auth =  ['auth' => [$this->key, $this->secret]];
         $this->client = new Client(['base_uri' => 'https://api.handwriting.io/']);
     }
 
-    public function getAllHandwriting(): array
+    public function getAllHandwriting(array $values=[]): array
     {
-        $client = $this->client->request('GET', 'handwritings',['auth' => [$this->key, $this->secret]]);
+        $client = $this->client->request('GET', 'handwritings', $this->auth);
         return json_decode($client->getBody()->getContents());
     }
 
     public function getHandwriting(string $handwritingID): object
     {
-        $client = $this->client->request('GET', 'handwritings/'.$handwritingID,['auth' => [$this->key, $this->secret]]);
+        $client = $this->client->request('GET', 'handwritings/'.$handwritingID, $this->auth);
         return json_decode($client->getBody()->getContents());
     }
 
     public function renderPNGImage($build): string
     {
-        $client = $this->client->request('GET', '/render/png?'.$build,['auth' => [$this->key, $this->secret],'headers'=> ['Content-Type' => 'image/png']]);
+        $params = ['headers'=> ['Content-Type' => 'image/png']];
+        $this->auth = array_merge($this->auth, $params);
+        $client = $this->client->request('GET', '/render/png?'.$build, $this->auth);
         $png = 'data:image/png;base64,' . base64_encode($client->getBody()->getContents());
         return '<img src="'.$png.'">';
     }
 
     public function renderPNGString($build): string
     {
-        $client = $this->client->request('GET', '/render/png?'.$build,['auth' => [$this->key, $this->secret],'headers'=> ['Content-Type' => 'image/png']]);
+        $params = ['headers'=> ['Content-Type' => 'image/png']];
+        $this->auth = array_merge($this->auth, $params);
+        $client = $this->client->request('GET', '/render/png?'.$build, $this->auth);
         return 'data:image/png;base64,' . base64_encode($client->getBody()->getContents());
+    }
+
+    public function renderPDF($build,$filePath=__DIR__.'/pdf/',$fileName='test.pdf'): string
+    {
+        if (!file_exists($filePath)) { mkdir($filePath, 0777, true); }
+        $params = ['headers'=> ['Content-Type' => 'application/pdf','Content-disposition'=>'inline; filename=myFile.pdf','Accept-Ranges' => 'bytes'],'sink'=> $filePath.$fileName ];
+        $this->auth = array_merge($this->auth, $params);
+        $this->client->request('GET', '/render/pdf?'.$build, $this->auth);
+        return $filePath.$fileName;
     }
 }

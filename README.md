@@ -16,16 +16,37 @@ composer require nickcheek/handwriting
 ```
 
 ## Usage
-
+You can use renderPNGImage(), renderPNGString(), or renderPDF()
 ``` php
-// Usage description here
-```
+use Nickcheek\Handwriting\Writer;
 
-### Testing
+$handwriting = new Writer($key, $secret);
 
-``` bash
-composer test
+//get random font
+$random = $this->hw->getAllHandwriting(['limit'=> 3,'offset'=>1,'order_dir'=>'asc','order_by'=>'title']);
+
+//build the url
+$build = $handwriting->text('Testing the handwriting.io library')->font($random[array_rand($random)]->id)->build();
+
+echo $handwriting->renderPNGImage($build);
 ```
+![Render](http://nickcheek.com/images/example.png)
+### Builder Class
+The builder class allows you to inject the settings you'd like for your image in a chainable format.
+``` php
+$build = $handwriting->text('text to output')
+            ->font($fontID)
+            ->height('50px')
+            ->width('10px')
+            ->size('25px')
+            ->lineSpace()
+            ->lineSpaceVariance()
+            ->wordSpaceVariance()
+            ->randomSeed()
+            ->color()
+            ->build();
+```
+Check [the docs](http://handwriting-api-docs.s3-website-us-east-1.amazonaws.com/#handwritings) if you'd like more information.
 
 ### Changelog
 
