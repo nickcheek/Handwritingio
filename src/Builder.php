@@ -62,7 +62,7 @@ class Builder
         return $this;
     }
 
-    public function textSize($size): object
+    public function size($size): object
     {
         $this->size = '&handwriting_size=' . $size;
         return $this;
