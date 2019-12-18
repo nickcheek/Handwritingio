@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Nickcheek\Handwriting;
-
 
 class Builder
 {
