@@ -2,7 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/nickcheek/handwriting.svg?style=flat-square)](https://packagist.org/packages/nickcheek/handwriting)
 [![Quality Score](https://img.shields.io/scrutinizer/g/nickcheek/handwritingio.svg?style=flat-square)](https://scrutinizer-ci.com/g/nickcheek/handwritingio)
-[![Total Downloads](https://img.shields.io/packagist/dt/nickcheek/handwriting.svg?style=flat-square)](https://packagist.org/packages/nickcheek/handwriting)
 
 This is a simple php wrapper for the handwriting.io api.
 ## Installation
