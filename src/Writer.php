@@ -33,7 +33,7 @@ class Writer extends Builder
         return json_decode($client->getBody()->getContents());
     }
 
-    public function renderPNGImage($build): string
+    public function renderPNGImage(string $build): string
     {
         $params = ['headers'=> ['Content-Type' => 'image/png']];
         $this->auth = array_merge($this->auth, $params);
@@ -42,7 +42,7 @@ class Writer extends Builder
         return '<img src="'.$png.'">';
     }
 
-    public function renderPNGString($build): string
+    public function renderPNGString(string $build): string
     {
         $params = ['headers'=> ['Content-Type' => 'image/png']];
         $this->auth = array_merge($this->auth, $params);
@@ -50,7 +50,7 @@ class Writer extends Builder
         return 'data:image/png;base64,' . base64_encode($client->getBody()->getContents());
     }
 
-    public function renderPDF($build,$filePath=__DIR__.'/pdf/',$fileName='test.pdf'): string
+    public function renderPDF(string $build, string $filePath=__DIR__.'/pdf/',string $fileName='test.pdf'): string
     {
         if (!file_exists($filePath)) { mkdir($filePath, 0777, true); }
         $params = ['headers'=> ['Content-Type' => 'application/pdf','Content-disposition'=>'inline; filename=myFile.pdf','Accept-Ranges' => 'bytes'],'sink'=> $filePath.$fileName ];

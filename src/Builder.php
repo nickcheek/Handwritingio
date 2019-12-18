@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Nickcheek\Handwriting;
+
 
 class Builder
 {
@@ -30,67 +32,67 @@ class Builder
         $this->color = '';
     }
 
-    public function build()
+    public function build(): string
     {
         $this->url = $this->font.$this->text.$this->width.$this->height.$this->size.$this->lineSpace.$this->lineSpaceVariance.$this->wordSpaceVariance.$this->randomSeed.$this->color;
         return $this->url;
     }
 
-    public function font($handwriting_id='2D5QW0F80001')
+    public function font($handwriting_id='2D5QW0F80001'): object
     {
         $this->font = 'handwriting_id='.$handwriting_id;
         return $this;
     }
 
-    public function text($text)
+    public function text($text): object
     {
         $this->text = '&text=' . $text;
         return $this;
     }
 
-    public function width($width)
+    public function width($width): object
     {
         $this->width = '&width=' . $width;
         return $this;
     }
 
-    public function height($height)
+    public function height($height): object
     {
         $this->height = '&height=' . $height;
         return $this;
     }
 
-    public function textSize($size)
+    public function textSize($size): object
     {
         $this->size = '&handwriting_size=' . $size;
         return $this;
     }
 
-    public function lineSpace($lineSpace)
+    public function lineSpace($lineSpace): object
     {
         $this->lineSpace = '&line_spacing=' . $lineSpace;
         return $this;
     }
 
-    public function lineSpaceVariance($lineSpaceVariance)
+    public function lineSpaceVariance($lineSpaceVariance): object
     {
         $this->lineSpaceVariance = '&line_spacing_variance=' . $lineSpaceVariance;
         return $this;
     }
 
-    public function wordSpaceVariance($wordSpace)
+    public function wordSpaceVariance($wordSpace): object
     {
         $this->wordSpaceVariance = '&word_spacing_variance=' . $wordSpace;
         return $this;
     }
 
-    public function randomSeed($seed)
+    public function randomSeed($seed): object
     {
         $this->randomSeed = '&random_seed=' . $seed;
         return $this;
     }
 
-    public function color($color)
+    public function color($color): object
     {
         $this->color = '&handwriting_color=' . $color;
         return $this;

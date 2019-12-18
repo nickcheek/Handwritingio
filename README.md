@@ -1,4 +1,4 @@
-# Very short description of the package
+# Handwriting.io PHP API Wrapper 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/nickcheek/handwriting.svg?style=flat-square)](https://packagist.org/packages/nickcheek/handwriting)
 [![Build Status](https://img.shields.io/travis/nickcheek/handwriting/master.svg?style=flat-square)](https://travis-ci.org/nickcheek/handwriting)
@@ -23,10 +23,12 @@ use Nickcheek\Handwriting\Writer;
 $handwriting = new Writer($key, $secret);
 
 //get random font
-$random = $this->hw->getAllHandwriting(['limit'=> 3,'offset'=>1,'order_dir'=>'asc','order_by'=>'title']);
+$random = $handwriting->getAllHandwriting(['limit'=> 50,'offset'=>1,'order_dir'=>'asc','order_by'=>'title']);
 
 //build the url
-$build = $handwriting->text('Testing the handwriting.io library')->font($random[array_rand($random)]->id)->build();
+$build = $handwriting->text('Testing the handwriting.io library')
+                    ->font($random[array_rand($random)]->id)
+                    ->build();
 
 echo $handwriting->renderPNGImage($build);
 ```
