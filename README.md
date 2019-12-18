@@ -1,8 +1,7 @@
 # Handwriting.io PHP API Wrapper 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/nickcheek/handwriting.svg?style=flat-square)](https://packagist.org/packages/nickcheek/handwriting)
-[![Build Status](https://img.shields.io/travis/nickcheek/handwriting/master.svg?style=flat-square)](https://travis-ci.org/nickcheek/handwriting)
-[![Quality Score](https://img.shields.io/scrutinizer/g/nickcheek/handwriting.svg?style=flat-square)](https://scrutinizer-ci.com/g/nickcheek/handwriting)
+[![Quality Score](https://img.shields.io/scrutinizer/g/nickcheek/handwritingio.svg?style=flat-square)](https://scrutinizer-ci.com/g/nickcheek/handwritingio)
 [![Total Downloads](https://img.shields.io/packagist/dt/nickcheek/handwriting.svg?style=flat-square)](https://packagist.org/packages/nickcheek/handwriting)
 
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
