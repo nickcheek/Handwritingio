@@ -14,7 +14,7 @@ class renderPNGClass
     public function makeImage($text)
     {
         $builder = $this->writer->font()->text($text)->build();
-        $this->writer->renderPNGImage($builder);
+        return $this->writer->renderPNGImage($builder);
     }
 }
 
