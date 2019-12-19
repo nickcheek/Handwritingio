@@ -23,7 +23,11 @@ class Writer extends Builder
 
     public function getAllHandwriting(array $values=[]): array
     {
-        $client = $this->client->request('GET', 'handwritings', $this->auth);
+        if(!empty($values)){
+            $client = $this->client->request('GET', 'handwritings?' . $this->buildURL($values), $this->auth);
+        } else {
+            $client = $this->client->request('GET', 'handwritings', $this->auth);
+        }
         return json_decode($client->getBody()->getContents());
     }
 
@@ -57,5 +61,27 @@ class Writer extends Builder
         $this->auth = array_merge($this->auth, $params);
         $this->client->request('GET', '/render/pdf?'.$build, $this->auth);
         return $filePath.$fileName;
+    }
+
+    public function buildURL(array $values): string
+    {
+        $this->url = '';
+        foreach($values as $key=>$value) {
+            switch ($key) {
+                case 'limit':
+                    $this->url .= '&limit=' . $value;
+                    break;
+                case 'offset':
+                    $this->url .= '&offset=' . $value;
+                    break;
+                case 'order_dir':
+                    $this->url .= '&order_dir=' . $value;
+                    break;
+                case 'order_by':
+                    $this->url .= '&order_by=' . $value;
+                    break;
+            }
+        }
+        return $this->url;
     }
 }
