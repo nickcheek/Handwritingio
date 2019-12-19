@@ -2,6 +2,8 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/nickcheek/handwriting.svg?style=flat-square)](https://packagist.org/packages/nickcheek/handwriting)
 [![Quality Score](https://img.shields.io/scrutinizer/g/nickcheek/handwritingio.svg?style=flat-square)](https://scrutinizer-ci.com/g/nickcheek/handwritingio)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nickcheek/Handwritingio/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nickcheek/Handwritingio/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/nickcheek/Handwritingio/badges/build.png?b=master)](https://scrutinizer-ci.com/g/nickcheek/Handwritingio/build-status/master)
 
 This is a simple php wrapper for the handwriting.io api.  You'll need to register for an account and get your access and secret tokens.
 ## Installation
